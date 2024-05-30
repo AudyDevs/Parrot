@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!--App Basics-->
+    <color name="primary">#229ba4</color>
+    <color name="primaryVariant">#28d4f1</color>
+    <color name="secondary">#edd132</color>
+    <color name="secondaryVariant">#fc930a</color>
+    <color name="background">#FFFFFFFF</color>
+    <color name="error">#E91E1E</color>
+    <color name="onPrimary">#FFFFFFFF</color>
+    <color name="onBackground">#FF000000</color>
+    <color name="onError">#FFFFFFFF</color>
+
+    <color name="disable">#9C9B9B</color>
 </resources>

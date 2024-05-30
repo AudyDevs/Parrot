@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Parrot</string>
+
+    <!--BottomBar-->
+    <string name="chats">Chats</string>
+    <string name="groups">Grupos</string>
+    <string name="profile">Perfil</string>
+
+    <!--contentDescription-->
+    <string name="cd_logout">Logout</string>
 </resources>
