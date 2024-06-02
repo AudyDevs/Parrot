@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("kotlin-kapt")
     alias(libs.plugins.daggerHiltAndroid)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -42,6 +43,9 @@ android {
 
 dependencies {
 
+    //SplashScreen
+    implementation(libs.androidx.core.splashscreen)
+
     //NavComponent
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
@@ -55,6 +59,10 @@ dependencies {
     //Lifecycle
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
+    //FireBase
+    implementation(platform(libs.firebase.bom))
+    implementation("com.google.firebase:firebase-analytics")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

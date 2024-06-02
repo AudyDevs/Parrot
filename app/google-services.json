@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "156797483241",
+    "project_id": "fir-audy",
+    "storage_bucket": "fir-audy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:156797483241:android:9bf3bd477d6906adabd878",
+        "android_client_info": {
+          "package_name": "com.example.parrot"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMr55anqtb6b18JLWIeB_pgNSjUfLhZ8c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

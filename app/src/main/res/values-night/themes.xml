@@ -1,10 +1,82 @@
 <resources>
-    <!-- Base application theme. -->
     <style name="Base.Theme.Parrot" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorOnPrimary">@color/onPrimary</item>
         <item name="colorPrimaryVariant">@color/primaryVariant</item>
         <item name="colorError">@color/error</item>
         <item name="colorOnError">@color/onError</item>
+        <item name="android:windowBackground">@color/background</item>
+    </style>
+
+    <style name="Theme.Parrot" parent="Base.Theme.Parrot" />
+
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/primary</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_parrot</item>
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="postSplashScreenTheme">@style/Theme.Parrot</item>
+    </style>
+
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/primaryVariant</item>
+    </style>
+
+    <style name="PopupMenu" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:textColor">@color/onBackground</item>
+        <item name="android:itemBackground">@color/background</item>
+    </style>
+
+    <style name="ThemeOverlay.AppCompat.Dialog" parent="@style/Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/primary</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/DialogButtonStyled</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/DialogButtonStyled</item>
+    </style>
+
+    <style name="DialogButtonStyled" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:textColor">@color/primary</item> <!-- button text color -->
+    </style>
+
+    <style name="TextInputLayout" parent="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxBackgroundColor">@color/primary</item>
+        <item name="boxStrokeColor">@color/onPrimary</item>
+        <item name="hintTextColor">@color/onPrimary</item>
+        <item name="android:textColorHint">@color/onPrimary</item>
+        <item name="android:backgroundTint">@color/onPrimary</item>
+        <item name="endIconTint">@color/onPrimary</item>
+        <item name="startIconTint">@color/onPrimary</item>
+        <item name="counterTextColor">@color/onPrimary</item>
+        <item name="helperTextTextColor">@color/error</item>
+    </style>
+
+    <style name="TextInputLayout.Email" parent="TextInputLayout">
+        <item name="endIconMode">clear_text</item>
+    </style>
+
+    <style name="TextInputLayout.Password" parent="TextInputLayout">
+        <item name="counterEnabled">true</item>
+        <item name="counterMaxLength">16</item>
+        <item name="endIconMode">password_toggle</item>
+    </style>
+
+    <style name="TextInputEditText.Email" parent="ThemeOverlay.Material3.TextInputEditText">
+        <item name="android:textColor">@color/onPrimary</item>
+        <item name="android:textColorHint">@color/onPrimary</item>
+        <item name="android:inputType">textEmailAddress</item>
+        <item name="android:lines">1</item>
+    </style>
+
+    <style name="TextInputEditText.Password" parent="ThemeOverlay.Material3.TextInputEditText">
+        <item name="android:textColor">@color/onPrimary</item>
+        <item name="android:textColorHint">@color/onPrimary</item>
+        <item name="android:inputType">textPassword</item>
+        <item name="android:lines">1</item>
+        <item name="android:maxLength">16</item>
+    </style>
+
+    <style name="TextInputEditText.Phone" parent="ThemeOverlay.Material3.TextInputEditText">
+        <item name="android:textColor">@color/onPrimary</item>
+        <item name="android:textColorHint">@color/onPrimary</item>
+        <item name="android:inputType">number</item>
+        <item name="android:lines">1</item>
     </style>
 </resources>

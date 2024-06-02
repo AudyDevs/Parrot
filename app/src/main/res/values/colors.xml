@@ -12,4 +12,5 @@
     <color name="onError">#FFFFFFFF</color>
 
     <color name="disable">#9C9B9B</color>
+    <color name="transparent">#00FFFFFF</color>
 </resources>

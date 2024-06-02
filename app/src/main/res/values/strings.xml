@@ -6,6 +6,32 @@
     <string name="groups">Grupos</string>
     <string name="profile">Perfil</string>
 
-    <!--contentDescription-->
+    <!--ContentDescription-->
     <string name="cd_logout">Logout</string>
+    <string name="cd_logo">Logo</string>
+
+    <!--HintText-->
+    <string name="email">Correo</string>
+    <string name="password">Contraseña</string>
+    <string name="repeatPassword">Valida la contraseña</string>
+    <string name="phone">Teléfono</string>
+    <string name="nickName">Apodo</string>
+    <string name="required">Requerido</string>
+
+    <!--ResponseText-->
+    <string name="invalidEmail">Dirección de correo inválido</string>
+    <string name="minLengthPassword">Mínimo 8 caracteres</string>
+    <string name="maxLengthPassword">Máximo 8 caracteres</string>
+    <string name="minUpCasePassword">Debe contener 1 carácter en mayúsculas</string>
+    <string name="minLowCasePassword">Debe contener 1 carácter en minúsculas</string>
+
+    <!--ButtonText-->
+    <string name="buttonAccess">Acceder</string>
+    <string name="buttonGoogle">Accede con Google</string>
+    <string name="buttonFacebook">Accede con Facebook</string>
+    <string name="signUp">¿No tienes una cuenta? Registrate aquí</string>
+    <string name="buttonRegister">Registrar</string>
+
+    <!--Titles-->
+    <string name="titleRegister">Registro usuario</string>
 </resources>

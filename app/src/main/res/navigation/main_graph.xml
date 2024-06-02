@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/chatsFragment"
-        android:name="com.example.toucan.ui.fragments.ChatsFragment"
+        android:name="com.example.parrot.ui.fragments.ChatsFragment"
         android:label="fragment_chats"
         tools:layout="@layout/fragment_chats" />
     <fragment
         android:id="@+id/groupsFragment"
-        android:name="com.example.toucan.ui.fragments.GroupsFragment"
+        android:name="com.example.parrot.ui.fragments.GroupsFragment"
         android:label="fragment_groups"
         tools:layout="@layout/fragment_groups" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.toucan.ui.fragments.ProfileFragment"
+        android:name="com.example.parrot.ui.fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>
