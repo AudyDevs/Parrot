@@ -15,10 +15,10 @@ object ValidatePassword {
         if (password.length > 16) {
             return ContextCompat.getString(context, R.string.maxLengthPassword)
         }
-        if (password.matches(".*[A-Z].*".toRegex())) {
+        if (!password.matches(".*[A-Z].*".toRegex())) {
             return ContextCompat.getString(context, R.string.minUpCasePassword)
         }
-        if (password.matches(".*[a-z].*".toRegex())) {
+        if (!password.matches(".*[a-z].*".toRegex())) {
             return ContextCompat.getString(context, R.string.minLowCasePassword)
         }
         return null

@@ -37,6 +37,10 @@
         <item name="android:textColor">@color/primary</item> <!-- button text color -->
     </style>
 
+    <style name="ProgressBarStyle">
+        <item name="colorAccent">@color/secondary</item>
+    </style>
+
     <style name="TextInputLayout" parent="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense">
         <item name="boxBackgroundColor">@color/primary</item>
         <item name="boxStrokeColor">@color/onPrimary</item>

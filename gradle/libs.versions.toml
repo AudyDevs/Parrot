@@ -2,9 +2,12 @@
 agp = "8.3.2"
 coreSplashscreen = "1.0.1"
 coreTesting = "1.1.1"
-firebaseBom = "33.1.0"
+datastorePreferences = "1.1.1"
+firebaseAnalytics = "22.0.1"
+firebaseAuth = "23.0.0"
+firebaseBom = "32.8.0"
 hiltAndroid = "2.48"
-jetbrainsKotlinxCoroutinesTest = "1.7.1"
+jetbrainsKotlinxCoroutinesTest = "1.7.3"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -20,13 +23,17 @@ daggerHiltAndroid = "2.48"
 mockk = "1.12.3"
 navigationFragmentKtx = "2.7.7"
 navigationUiKtx = "2.7.7"
+playServicesAuth = "21.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
 androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleRuntimeKtx" }
 core-testing = { module = "android.arch.core:core-testing", version.ref = "coreTesting" }
+firebase-analytics = { module = "com.google.firebase:firebase-analytics", version.ref = "firebaseAnalytics" }
+firebase-auth = { module = "com.google.firebase:firebase-auth", version.ref = "firebaseAuth" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltAndroid" }
@@ -42,6 +49,7 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+play-services-auth = { module = "com.google.android.gms:play-services-auth", version.ref = "playServicesAuth" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

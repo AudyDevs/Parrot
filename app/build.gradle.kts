@@ -43,6 +43,9 @@ android {
 
 dependencies {
 
+    //Datastore preferences
+    implementation(libs.androidx.datastore.preferences)
+
     //SplashScreen
     implementation(libs.androidx.core.splashscreen)
 
@@ -62,7 +65,9 @@ dependencies {
 
     //FireBase
     implementation(platform(libs.firebase.bom))
-    implementation("com.google.firebase:firebase-analytics")
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.auth)
+    implementation(libs.play.services.auth)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

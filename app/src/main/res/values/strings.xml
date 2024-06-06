@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Parrot</string>
+    <string name="default_web_client_id">156797483241-vr4tr2vqv2c9t1lv445f219s2kqnshpk.apps.googleusercontent.com</string>
 
     <!--BottomBar-->
     <string name="chats">Chats</string>
@@ -9,6 +10,8 @@
     <!--ContentDescription-->
     <string name="cd_logout">Logout</string>
     <string name="cd_logo">Logo</string>
+    <string name="cd_error">Error</string>
+    <string name="cd_success">Success</string>
 
     <!--HintText-->
     <string name="email">Correo</string>
@@ -16,7 +19,10 @@
     <string name="repeatPassword">Valida la contraseña</string>
     <string name="phone">Teléfono</string>
     <string name="nickName">Apodo</string>
+
+    <!--ValidateText-->
     <string name="required">Requerido</string>
+    <string name="exactPassword">Las contraseñas deben ser idénticas</string>
 
     <!--ResponseText-->
     <string name="invalidEmail">Dirección de correo inválido</string>
@@ -24,6 +30,8 @@
     <string name="maxLengthPassword">Máximo 8 caracteres</string>
     <string name="minUpCasePassword">Debe contener 1 carácter en mayúsculas</string>
     <string name="minLowCasePassword">Debe contener 1 carácter en minúsculas</string>
+    <string name="minLengthPhone">Debe contener 9 dígitos</string>
+    <string name="invalidPhone">Solo debe contener dígitos</string>
 
     <!--ButtonText-->
     <string name="buttonAccess">Acceder</string>
@@ -34,4 +42,22 @@
 
     <!--Titles-->
     <string name="titleRegister">Registro usuario</string>
+
+    <!--DialogAlertErrors-->
+    <string name="titleError">Oh no!</string>
+    <string name="subTitleErrorSignIn">Se ha producido un error autenticando al usuario, volved a intentarlo más tarde</string>
+    <string name="subTitleErrorLogOut">Se ha producido un error deslogeando al usuario, volved a intentarlo más tarde</string>
+    <string name="subTitleErrorSignUp">Se ha producido un error creando al usuario, volved a intentarlo más tarde</string>
+    <string name="buttonError">Volver a intentar</string>
+
+    <!--DialogAlertSuccess-->
+    <string name="titleSuccess">Registro con éxtio</string>
+    <string name="subTitleSuccessSignUp">El registro del usuario se ha completado correctamente</string>
+    <string name="buttonSuccess">Continuar</string>
+
+    <!--DialogLogout-->
+    <string name="dialogLogoutTitle">Cerrar sesión</string>
+    <string name="dialogLogoutSubTitle">¿Estás seguro de que quiere cerrar la sesión de su usuario?</string>
+    <string name="dialogLogoutButtonYes">CERRAR SESIÓN</string>
+    <string name="dialogLogoutButtonCancel">CANCELAR</string>
 </resources>

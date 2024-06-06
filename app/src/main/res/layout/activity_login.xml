@@ -8,27 +8,35 @@
     android:background="@drawable/ic_wallpaper"
     tools:context=".ui.activities.login.view.LoginActivity">
 
-    <ImageView
-        android:id="@+id/imageLogo"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/cd_logo"
-        android:src="@drawable/ic_splash_parrot"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/layoutEmail">
 
-    <ImageView
-        android:id="@+id/imageBrand"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/cd_logo"
-        android:src="@drawable/ic_brand"
-        android:paddingHorizontal="80dp"
-        android:layout_marginTop="110dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        <ImageView
+            android:id="@+id/imageLogo"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:contentDescription="@string/cd_logo"
+            android:src="@drawable/ic_splash_parrot"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageBrand"
+            android:layout_width="180dp"
+            android:layout_height="80dp"
+            android:contentDescription="@string/cd_logo"
+            android:src="@drawable/ic_brand"
+            android:layout_marginTop="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layoutEmail"
@@ -36,9 +44,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
+        android:layout_marginBottom="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageBrand">
+        app:layout_constraintBottom_toTopOf="@id/layoutPassword">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textEmail"
@@ -54,10 +63,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layoutEmail">
+        app:layout_constraintBottom_toTopOf="@id/btnSignIn">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textPassword"
@@ -68,16 +77,17 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/btnSignUp"
+        android:id="@+id/btnSignIn"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         app:cardBackgroundColor="@color/transparent"
         app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layoutPassword">
+        app:layout_constraintBottom_toTopOf="@id/separator">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -103,9 +113,9 @@
         android:id="@+id/separator"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginHorizontal="14dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@color/primary"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignUp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/btnSignInGoogle"/>
@@ -210,4 +220,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@style/ProgressBarStyle"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
