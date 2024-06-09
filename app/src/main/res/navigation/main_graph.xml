@@ -3,21 +3,43 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/chatsFragment">
+    app:startDestination="@id/notesFragment">
 
     <fragment
-        android:id="@+id/chatsFragment"
-        android:name="com.example.parrot.ui.fragments.ChatsFragment"
-        android:label="fragment_chats"
-        tools:layout="@layout/fragment_chats" />
+        android:id="@+id/notesFragment"
+        android:name="com.example.parrot.ui.fragments.view.notes.NotesFragment"
+        android:label="fragment_notes"
+        tools:layout="@layout/fragment_notes" >
+        <action
+            android:id="@+id/action_notesFragment_to_detailActivity"
+            app:destination="@id/detailActivity" />
+    </fragment>
     <fragment
-        android:id="@+id/groupsFragment"
-        android:name="com.example.parrot.ui.fragments.GroupsFragment"
-        android:label="fragment_groups"
-        tools:layout="@layout/fragment_groups" />
+        android:id="@+id/archivedFragment"
+        android:name="com.example.parrot.ui.fragments.view.archived.ArchivedFragment"
+        android:label="fragment_archived"
+        tools:layout="@layout/fragment_archived" >
+        <action
+            android:id="@+id/action_archivedFragment_to_detailActivity"
+            app:destination="@id/detailActivity" />
+    </fragment>
     <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.example.parrot.ui.fragments.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        android:id="@+id/deletedFragment"
+        android:name="com.example.parrot.ui.fragments.view.deleted.DeletedFragment"
+        android:label="fragment_deleted"
+        tools:layout="@layout/fragment_deleted" >
+        <action
+            android:id="@+id/action_deletedFragment_to_detailActivity"
+            app:destination="@id/detailActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/detailActivity"
+        android:name="com.example.parrot.ui.activities.detail.view.DetailActivity"
+        android:label="activity_detail"
+        tools:layout="@layout/activity_detail" >
+        <argument
+            android:name="idNote"
+            app:argType="string"
+            app:nullable="true" />
+    </activity>
 </navigation>

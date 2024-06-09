@@ -17,13 +17,11 @@ import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 const val GOOGLE_REQUEST_CODE_SIGN_IN = 100
-const val FACEBOOK_REQUEST_CODE_SIGN_IN = 200
 
 class LoginRepositoryImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth
 ) : LoginRepository {
 
-    //Email
     override suspend fun loginWithEmail(email: String, password: String): LoginState {
         return try {
             firebaseAuth.signInWithEmailAndPassword(email, password).await()
@@ -51,7 +49,6 @@ class LoginRepositoryImpl @Inject constructor(
         }
     }
 
-    //Google
     override suspend fun loginWithGoogle(activity: Activity) {
         val googleOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(activity.getString(R.string.default_web_client_id))
@@ -86,10 +83,5 @@ class LoginRepositoryImpl @Inject constructor(
 
         }
         return LoginModel(email = "", provider = ProviderType.Google)
-    }
-
-    //Facebook
-    override suspend fun loginWithFacebook() {
-
     }
 }

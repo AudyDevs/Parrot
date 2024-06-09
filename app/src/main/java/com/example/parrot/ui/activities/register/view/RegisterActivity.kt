@@ -14,6 +14,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.example.parrot.R
 import com.example.parrot.core.type.ErrorType
 import com.example.parrot.core.validates.ValidateEmail.validEmail
+import com.example.parrot.core.validates.ValidateNickName.validNickName
 import com.example.parrot.core.validates.ValidatePassword.validPassword
 import com.example.parrot.core.validates.ValidatePhone.validPhone
 import com.example.parrot.core.validates.ValidateRepeatPassword.validRepeatPassword
@@ -55,16 +56,23 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun initListeners() {
+        binding.textNickName.setOnFocusChangeListener { _, focused ->
+            if (!focused) {
+                binding.layoutNickName.helperText =
+                    validNickName(this, binding.textNickName.text.toString())
+            }
+        }
+        binding.layoutNickName.setEndIconOnClickListener {
+            clearNickName()
+        }
         binding.textPhone.setOnFocusChangeListener { _, focused ->
             if (!focused) {
-                binding.layoutPhone.helperText =
-                    validPhone(this, binding.textPhone.text.toString())
+                binding.layoutPhone.helperText = validPhone(this, binding.textPhone.text.toString())
             }
         }
         binding.textEmail.setOnFocusChangeListener { _, focused ->
             if (!focused) {
-                binding.layoutEmail.helperText =
-                    validEmail(this, binding.textEmail.text.toString())
+                binding.layoutEmail.helperText = validEmail(this, binding.textEmail.text.toString())
             }
         }
         binding.layoutEmail.setEndIconOnClickListener {
@@ -78,22 +86,15 @@ class RegisterActivity : AppCompatActivity() {
         }
         binding.textRepeatPassword.setOnFocusChangeListener { _, focused ->
             if (!focused) {
-                binding.layoutRepeatPassword.helperText =
-                    validRepeatPassword(
-                        this,
-                        binding.textPassword.text.toString(),
-                        binding.textRepeatPassword.text.toString()
-                    )
+                binding.layoutRepeatPassword.helperText = validRepeatPassword(
+                    this,
+                    binding.textPassword.text.toString(),
+                    binding.textRepeatPassword.text.toString()
+                )
             }
         }
         binding.btnRegister.setOnClickListener {
-            if (
-                binding.layoutNickName.helperText.isNullOrEmpty() &&
-                binding.layoutPhone.helperText.isNullOrEmpty() &&
-                binding.layoutEmail.helperText.isNullOrEmpty() &&
-                binding.layoutPassword.helperText.isNullOrEmpty() &&
-                binding.layoutRepeatPassword.helperText.isNullOrEmpty()
-            ) {
+            if (binding.layoutNickName.helperText.isNullOrEmpty() && binding.layoutPhone.helperText.isNullOrEmpty() && binding.layoutEmail.helperText.isNullOrEmpty() && binding.layoutPassword.helperText.isNullOrEmpty() && binding.layoutRepeatPassword.helperText.isNullOrEmpty()) {
                 registerViewModel.email = binding.textEmail.text.toString()
                 registerViewModel.password = binding.textPassword.text.toString()
                 registerViewModel.signUpUser()
@@ -104,6 +105,11 @@ class RegisterActivity : AppCompatActivity() {
     private fun clearEmail() {
         binding.textEmail.text?.clear()
         binding.layoutEmail.helperText = ContextCompat.getString(this, R.string.required)
+    }
+
+    private fun clearNickName() {
+        binding.textNickName.text?.clear()
+        binding.layoutNickName.helperText = ContextCompat.getString(this, R.string.required)
     }
 
     private fun initUIState() {
@@ -134,7 +140,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun onError() {
         binding.progressBar.isVisible = false
-        DialogError(this, ErrorType.SignUp, onClickButtonError = {
+        DialogError(this, ErrorType.SignUp.errorMessage, onClickButtonError = {
             registerViewModel.resetLoginState()
         })
     }

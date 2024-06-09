@@ -6,11 +6,10 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.Window
 import androidx.core.content.ContextCompat
-import com.example.parrot.core.type.ErrorType
 import com.example.parrot.databinding.DialogErrorBinding
 
 class DialogError(
-    context: Context, private val errorType: ErrorType, private var onClickButtonError: () -> Unit
+    context: Context, private val errorMessage: Int, private var onClickButtonError: () -> Unit
 ) : Dialog(context) {
 
     private val binding = DialogErrorBinding.inflate(layoutInflater)
@@ -27,7 +26,7 @@ class DialogError(
     }
 
     private fun initMessageError() {
-        binding.tvSubTitleError.text = ContextCompat.getString(context, errorType.errorMessage)
+        binding.tvSubTitleError.text = ContextCompat.getString(context, errorMessage)
     }
 
     private fun initListeners() {

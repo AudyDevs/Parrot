@@ -26,10 +26,9 @@ class DataStorePreferences @Inject constructor(private val dataStore: DataStore<
     suspend fun readDataStoreUser(): LoginModel = runBlocking {
         val preferences = dataStore.data.first()
         val email = preferences[PreferenceKeys.email].orEmpty()
-        val provider = when(preferences[PreferenceKeys.provider].orEmpty()){
+        val provider = when (preferences[PreferenceKeys.provider].orEmpty()) {
             ProviderType.Email.type -> ProviderType.Email
             ProviderType.Google.type -> ProviderType.Google
-            ProviderType.Facebook.type -> ProviderType.Facebook
             else -> ProviderType.Email
         }
         return@runBlocking LoginModel(email = email, provider = provider)

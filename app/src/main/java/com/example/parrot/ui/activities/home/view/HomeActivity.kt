@@ -95,7 +95,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun onError() {
         binding.progressBar.isVisible = false
-        DialogError(this, ErrorType.LogOut, onClickButtonError = {
+        DialogError(this, ErrorType.LogOut.errorMessage, onClickButtonError = {
             homeViewModel.resetLoginState()
         })
     }

@@ -3,15 +3,20 @@
     <string name="default_web_client_id">156797483241-vr4tr2vqv2c9t1lv445f219s2kqnshpk.apps.googleusercontent.com</string>
 
     <!--BottomBar-->
-    <string name="chats">Chats</string>
-    <string name="groups">Grupos</string>
-    <string name="profile">Perfil</string>
+    <string name="notes">Notas</string>
+    <string name="archive">Archivo</string>
+    <string name="delete">Papelera</string>
 
     <!--ContentDescription-->
     <string name="cd_logout">Logout</string>
     <string name="cd_logo">Logo</string>
     <string name="cd_error">Error</string>
     <string name="cd_success">Success</string>
+    <string name="cd_add">Add</string>
+    <string name="cd_color">Color</string>
+    <string name="cd_archive">Archivar</string>
+    <string name="cd_delete">Eliminar</string>
+    <string name="cd_back">Back</string>
 
     <!--HintText-->
     <string name="email">Correo</string>
@@ -19,6 +24,8 @@
     <string name="repeatPassword">Valida la contraseña</string>
     <string name="phone">Teléfono</string>
     <string name="nickName">Apodo</string>
+    <string name="titleNote">Título</string>
+    <string name="bodyNote">Nota</string>
 
     <!--ValidateText-->
     <string name="required">Requerido</string>
@@ -48,6 +55,11 @@
     <string name="subTitleErrorSignIn">Se ha producido un error autenticando al usuario, volved a intentarlo más tarde</string>
     <string name="subTitleErrorLogOut">Se ha producido un error deslogeando al usuario, volved a intentarlo más tarde</string>
     <string name="subTitleErrorSignUp">Se ha producido un error creando al usuario, volved a intentarlo más tarde</string>
+    <string name="subTitleErrorNoExistNotes">Se ha producido un error, el documento que se intenta buscar no existe</string>
+    <string name="subTitleErrorGetNotes">Se ha producido un error al crear la nota, volved a intentarlo más tarde</string>
+    <string name="subTitleErrorSaveNotes">Se ha producido un error al guardar la nota, volved a intentarlo más tarde</string>
+    <string name="subTitleErrorUpdateNotes">Se ha producido un error al actualizar la nota, volved a intentarlo más tarde</string>
+    <string name="subTitleErrorDeleteNotes">Se ha producido un error al eliminar la nota, volved a intentarlo más tarde</string>
     <string name="buttonError">Volver a intentar</string>
 
     <!--DialogAlertSuccess-->

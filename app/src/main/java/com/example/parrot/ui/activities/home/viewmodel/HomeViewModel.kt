@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.parrot.core.DispatcherProvider
 import com.example.parrot.domain.state.LoginState
-import com.example.parrot.domain.usecase.mail.LogOutWithEmailUseCase
 import com.example.parrot.domain.usecase.datastore.ClearUserDataStoreUseCase
+import com.example.parrot.domain.usecase.mail.LogOutWithEmailUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

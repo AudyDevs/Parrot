@@ -10,7 +10,6 @@ import com.example.parrot.domain.state.LoginState
 import com.example.parrot.domain.state.SplashState
 import com.example.parrot.domain.usecase.datastore.GetUserDataStoreUseCase
 import com.example.parrot.domain.usecase.datastore.SaveUserDataStoreUseCase
-import com.example.parrot.domain.usecase.facebook.LoginWithFacebookUseCase
 import com.example.parrot.domain.usecase.google.LoginWithGoogleUseCase
 import com.example.parrot.domain.usecase.google.SignUpWithGoogleUseCase
 import com.example.parrot.domain.usecase.mail.LoginWithEmailUseCase
@@ -27,7 +26,6 @@ class LoginViewModel @Inject constructor(
     private val loginWithEmailUseCase: LoginWithEmailUseCase,
     private val loginWithGoogleUseCase: LoginWithGoogleUseCase,
     private val signUpWithGoogleUseCase: SignUpWithGoogleUseCase,
-    private val loginWithFacebookUseCase: LoginWithFacebookUseCase,
     private val getUserDataStoreUseCase: GetUserDataStoreUseCase,
     private val saveUserDataStoreUseCase: SaveUserDataStoreUseCase
 ) : ViewModel() {
@@ -103,15 +101,6 @@ class LoginViewModel @Inject constructor(
                 } else {
                     _loginState.value = LoginState.Error
                 }
-            }
-        }
-    }
-
-    fun loginUserWithFacebook() {
-        viewModelScope.launch {
-            withContext(dispatcherProvider.io) {
-                _loginState.value = LoginState.Loading
-                loginWithFacebookUseCase.invoke()
             }
         }
     }

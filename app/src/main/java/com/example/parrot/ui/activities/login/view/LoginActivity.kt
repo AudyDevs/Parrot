@@ -83,10 +83,6 @@ class LoginActivity : AppCompatActivity() {
             loginViewModel.provider = ProviderType.Google
             loginViewModel.loginUserWithGoogle(this)
         }
-        binding.btnSignInFacebook.setOnClickListener {
-            loginViewModel.provider = ProviderType.Facebook
-            loginViewModel.loginUserWithFacebook()
-        }
         binding.tvSignUp.setOnClickListener {
             navigateToRegisterActivity()
         }
@@ -130,7 +126,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun onError() {
         binding.progressBar.isVisible = false
-        DialogError(this, ErrorType.SignIn, onClickButtonError = {
+        DialogError(this, ErrorType.SignIn.errorMessage, onClickButtonError = {
             loginViewModel.resetLoginState()
         })
     }
