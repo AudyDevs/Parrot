@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.activities.home.view.HomeActivity">
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
@@ -16,27 +16,75 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/btnLogout"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="end|center"
-            android:layout_marginEnd="10dp"
-            android:background="@color/primary"
-            android:contentDescription="@string/cd_logout"
-            android:padding="10dp"
-            android:src="@drawable/ic_logout"
-            app:tint="@color/onPrimary" />
-
         <TextView
+            android:id="@+id/toolbarText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/pacifico"
             android:text="@string/app_name"
             android:textColor="@color/onPrimary"
-            android:textSize="32sp" />
-    </FrameLayout>
+            android:textSize="32sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnArchive"/>
+
+        <ImageButton
+            android:id="@+id/btnArchive"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/primary"
+            android:contentDescription="@string/cd_archive"
+            android:padding="10dp"
+            android:src="@drawable/ic_archived"
+            app:tint="@color/onPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnDelete" />
+
+        <ImageButton
+            android:id="@+id/btnDelete"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="end|center"
+            android:background="@color/primary"
+            android:contentDescription="@string/cd_delete"
+            android:padding="10dp"
+            android:src="@drawable/ic_deleted"
+            app:tint="@color/onPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnDeleteForever"/>
+
+        <ImageButton
+            android:id="@+id/btnDeleteForever"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="end|center"
+            android:background="@color/primary"
+            android:contentDescription="@string/cd_delete"
+            android:padding="10dp"
+            android:src="@drawable/ic_delete_forever"
+            app:tint="@color/onPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnLogout"/>
+
+        <ImageButton
+            android:id="@+id/btnLogout"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="end|center"
+            android:background="@color/primary"
+            android:contentDescription="@string/cd_logout"
+            android:padding="10dp"
+            android:src="@drawable/ic_logout"
+            app:tint="@color/onPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ProgressBar
         android:id="@+id/progressBar"

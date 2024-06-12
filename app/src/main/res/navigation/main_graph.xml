@@ -41,5 +41,8 @@
             android:name="idNote"
             app:argType="string"
             app:nullable="true" />
+        <argument
+            android:name="fragmentType"
+            app:argType="com.example.parrot.core.type.FragmentType" />
     </activity>
 </navigation>

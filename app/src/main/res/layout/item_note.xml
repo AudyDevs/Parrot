@@ -14,12 +14,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardCornerRadius="16dp"
-        app:cardElevation="16dp">
+        app:cardElevation="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="24dp">
+            android:paddingHorizontal="18dp"
+            android:paddingVertical="16dp">
 
             <TextView
                 android:id="@+id/tvIdNote"
@@ -51,7 +52,7 @@
                 android:id="@+id/tvBodyNote"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
                 android:textColor="@color/primary"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"

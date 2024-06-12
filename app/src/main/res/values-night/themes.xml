@@ -1,4 +1,5 @@
 <resources>
+
     <style name="Base.Theme.Parrot" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorOnPrimary">@color/onPrimary</item>
@@ -82,5 +83,13 @@
         <item name="android:textColorHint">@color/onPrimary</item>
         <item name="android:inputType">number</item>
         <item name="android:lines">1</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
     </style>
 </resources>

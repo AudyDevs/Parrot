@@ -11,18 +11,25 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.parrot.R
+import com.example.parrot.core.type.FragmentType
 import com.example.parrot.databinding.FragmentArchivedBinding
 import com.example.parrot.domain.model.NotesModel
 import com.example.parrot.domain.state.NotesState
+import com.example.parrot.ui.activities.home.manager.MenuManager
 import com.example.parrot.ui.dialogs.DialogError
-import com.example.parrot.ui.fragments.viewmodel.NotesViewModel
 import com.example.parrot.ui.fragments.adapter.NotesAdapter
+import com.example.parrot.ui.fragments.viewmodel.NotesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class ArchivedFragment : Fragment() {
+
+    @Inject
+    lateinit var menuManager: MenuManager
 
     private val notesViewModel by viewModels<NotesViewModel>()
     private lateinit var notesAdapter: NotesAdapter
@@ -30,8 +37,7 @@ class ArchivedFragment : Fragment() {
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentArchivedBinding.inflate(layoutInflater, container, false)
         initUI()
@@ -39,6 +45,7 @@ class ArchivedFragment : Fragment() {
     }
 
     private fun initUI() {
+        configSwipe()
         initAdapter()
         initUIState()
     }
@@ -49,16 +56,35 @@ class ArchivedFragment : Fragment() {
     }
 
     private fun initViewModel() {
+        menuManager.resetMenu()
         notesViewModel.getNotes()
     }
 
+    private fun configSwipe() {
+        binding.swipe.setColorSchemeResources(R.color.secondary)
+        binding.swipe.setOnRefreshListener {
+            notesViewModel.getNotes()
+        }
+    }
+
     private fun initAdapter() {
-        notesAdapter = NotesAdapter(onItemSelected = { noteModel ->
-            navigateToDetailActivity(noteModel.id)
-        })
+        notesAdapter = NotesAdapter(
+            onItemSelected = { noteModel ->
+                navigateToDetailActivity(noteModel.id)
+            },
+            showMenuOnClick = { showMenu, listNotesSelected ->
+                if (showMenu) {
+                    menuManager.showMenuOnClickItem(
+                        FragmentType.ArchivedFragment,
+                        listNotesSelected
+                    )
+                } else {
+                    menuManager.resetMenu()
+                }
+            })
 
         binding.rvNotes.apply {
-            layoutManager = GridLayoutManager(context, 2)
+            layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             adapter = notesAdapter
         }
     }
@@ -76,34 +102,46 @@ class ArchivedFragment : Fragment() {
                 }
             }
         }
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                menuManager.listNotesSelected.collect { listNotesSelected ->
+                    if (listNotesSelected.isNullOrEmpty()) {
+                        notesViewModel.getNotes()
+                    }
+                }
+            }
+        }
     }
 
     private fun onLoading() {
-        binding.progressBar.isVisible = true
+        binding.swipe.isRefreshing = true
     }
 
     private fun onComplete() {
-        binding.progressBar.isVisible = false
+        binding.swipe.isRefreshing = false
     }
 
     private fun onSuccess(notes: List<NotesModel>?) {
-        binding.progressBar.isVisible = false
+        binding.swipe.isRefreshing = false
         if (!notes.isNullOrEmpty()) {
             val filterNotes = notes.filter { notesModel ->
                 notesModel.isArchived == true && notesModel.isDeleted == false
             }
             notesAdapter.updateList(filterNotes)
+            binding.layoutStateArchived.isVisible = filterNotes.isEmpty()
         }
     }
 
     private fun onError(errorMessage: String) {
-        binding.progressBar.isVisible = false
+        binding.swipe.isRefreshing = false
         DialogError(requireContext(), errorMessage.toInt(), onClickButtonError = {})
     }
 
     private fun navigateToDetailActivity(idNote: String?) {
         findNavController().navigate(
-            ArchivedFragmentDirections.actionArchivedFragmentToDetailActivity(idNote)
+            ArchivedFragmentDirections.actionArchivedFragmentToDetailActivity(
+                idNote, FragmentType.ArchivedFragment
+            )
         )
     }
 }

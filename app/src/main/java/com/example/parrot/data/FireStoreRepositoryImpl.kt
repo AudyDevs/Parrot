@@ -34,10 +34,10 @@ class FireStoreRepositoryImpl @Inject constructor(
         return documentRef.get().continueWith { task ->
             if (task.isSuccessful) {
                 val notesList = mutableListOf<NotesModel>()
-                if (!task.result.isEmpty){
-                    for (data in task.result.documents){
+                if (!task.result.isEmpty) {
+                    for (data in task.result.documents) {
                         val notesModel: NotesModel? = data.toObject(NotesModel::class.java)
-                        if (notesModel != null){
+                        if (notesModel != null) {
                             notesList.add(notesModel)
                         }
                     }
@@ -77,6 +77,39 @@ class FireStoreRepositoryImpl @Inject constructor(
     override suspend fun deleteNote(noteId: String): Task<NotesState> {
         val documentRef = firebaseFireStore.collection("notes").document(noteId)
         return documentRef.delete().continueWith { task ->
+            if (task.isSuccessful) {
+                NotesState.Complete
+            } else {
+                throw Exception(ErrorType.DeleteNotes.errorMessage.toString())
+            }
+        }
+    }
+
+    override suspend fun multiUpdateNote(
+        listNoteId: MutableList<String>,
+        mapUpdate: Map<String, Boolean>
+    ): Task<NotesState> {
+        val batch = firebaseFireStore.batch()
+        listNoteId.forEach { noteId ->
+            val documentRef = firebaseFireStore.collection("notes").document(noteId)
+            batch.update(documentRef, mapUpdate)
+        }
+        return batch.commit().continueWith { task ->
+            if (task.isSuccessful) {
+                NotesState.Complete
+            } else {
+                throw Exception(ErrorType.UpdateNotes.errorMessage.toString())
+            }
+        }
+    }
+
+    override suspend fun multiDeleteNote(listNoteId: MutableList<String>): Task<NotesState> {
+        val batch = firebaseFireStore.batch()
+        listNoteId.forEach { noteId ->
+            val documentRef = firebaseFireStore.collection("notes").document(noteId)
+            batch.delete(documentRef)
+        }
+        return batch.commit().continueWith { task ->
             if (task.isSuccessful) {
                 NotesState.Complete
             } else {

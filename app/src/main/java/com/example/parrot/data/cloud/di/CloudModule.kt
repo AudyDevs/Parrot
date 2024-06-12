@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
+import com.example.parrot.ui.activities.home.manager.MenuManager
 import com.example.parrot.core.datastore.DataStorePreferences
 import com.example.parrot.data.DataStoreRepositoryImpl
 import com.example.parrot.data.FireStoreRepositoryImpl
@@ -20,8 +21,8 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-@InstallIn(SingletonComponent::class)
 @Module
+@InstallIn(SingletonComponent::class)
 class CloudModule {
 
     //FireBase
@@ -59,4 +60,8 @@ class CloudModule {
     @Provides
     fun provideDataStoreRepository(dataStorePreferences: DataStorePreferences): DataStoreRepository =
         DataStoreRepositoryImpl(dataStorePreferences)
+
+    @Singleton
+    @Provides
+    fun provideMenuManager() = MenuManager()
 }

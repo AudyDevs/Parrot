@@ -47,6 +47,9 @@ dependencies {
     //Datastore preferences
     implementation(libs.androidx.datastore.preferences)
 
+    //Refresh Layout
+    implementation(libs.androidx.swiperefreshlayout)
+
     //SplashScreen
     implementation(libs.androidx.core.splashscreen)
 

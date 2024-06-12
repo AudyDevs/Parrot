@@ -8,6 +8,7 @@
     <string name="delete">Papelera</string>
 
     <!--ContentDescription-->
+    <string name="cd_image">Image</string>
     <string name="cd_logout">Logout</string>
     <string name="cd_logo">Logo</string>
     <string name="cd_error">Error</string>
@@ -49,6 +50,7 @@
 
     <!--Titles-->
     <string name="titleRegister">Registro usuario</string>
+    <string name="selectColor">Selecciona un color</string>
 
     <!--DialogAlertErrors-->
     <string name="titleError">Oh no!</string>
@@ -60,6 +62,8 @@
     <string name="subTitleErrorSaveNotes">Se ha producido un error al guardar la nota, volved a intentarlo más tarde</string>
     <string name="subTitleErrorUpdateNotes">Se ha producido un error al actualizar la nota, volved a intentarlo más tarde</string>
     <string name="subTitleErrorDeleteNotes">Se ha producido un error al eliminar la nota, volved a intentarlo más tarde</string>
+    <string name="subTitleErrorSaveUser">Se ha producido un error al guardar el usuario, volved a intentarlo más tarde</string>
+    <string name="subTitleErrorDeleteUser">Se ha producido un error al eliminar el usuario, volved a intentarlo más tarde</string>
     <string name="buttonError">Volver a intentar</string>
 
     <!--DialogAlertSuccess-->
@@ -72,4 +76,20 @@
     <string name="dialogLogoutSubTitle">¿Estás seguro de que quiere cerrar la sesión de su usuario?</string>
     <string name="dialogLogoutButtonYes">CERRAR SESIÓN</string>
     <string name="dialogLogoutButtonCancel">CANCELAR</string>
+
+    <!--DialogDelete-->
+    <string name="dialogDeleteTitle">Eliminar nota</string>
+    <string name="dialogMultiDeleteTitle">Eliminar notas</string>
+    <string name="dialogDeleteSubTitle">¿Estás seguro de que quiere eliminar la nota definitivamente?</string>
+    <string name="dialogMultiDeleteSubTitle">¿Estás seguro de que quiere eliminar las notas definitivamente?</string>
+    <string name="dialogDeleteButtonYes">ELIMINAR</string>
+    <string name="dialogDeleteButtonCancel">CANCELAR</string>
+
+    <!--Text Stats-->
+    <string name="TitleEmptyNotes">Sin notas</string>
+    <string name="SubtitleEmptyNotes">Empieza a crear notas para no olvidarte nada</string>
+    <string name="TitleEmptyArchived">Sin notas archivadas</string>
+    <string name="SubtitleEmptyArchived">Tus notas archivadas se mostrarán aquí</string>
+    <string name="TitleEmptyDeleted">Papelera vacía</string>
+    <string name="SubtitleEmptyDeleted">No hay notas en la papelera</string>
 </resources>

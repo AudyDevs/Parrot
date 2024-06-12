@@ -9,9 +9,12 @@ import com.example.parrot.domain.model.NotesModel
 
 class NotesAdapter(
     private var notesList: List<NotesModel> = emptyList(),
+    private val showMenuOnClick: (Boolean, MutableList<String>) -> Unit,
     private val onItemSelected: (NotesModel) -> Unit
 ) :
     RecyclerView.Adapter<NotesViewHolder>() {
+
+    private val itemSelectedList = mutableListOf<String>()
 
     fun updateList(list: List<NotesModel>) {
         val diff = NotesDiffUtil(notesList, list)
@@ -29,6 +32,11 @@ class NotesAdapter(
     override fun getItemCount(): Int = notesList.size
 
     override fun onBindViewHolder(holder: NotesViewHolder, position: Int) {
-        holder.render(notesList[position], onItemSelected)
+        holder.render(
+            notesList[position],
+            itemSelectedList,
+            showMenuOnClick,
+            onItemSelected
+        )
     }
 }

@@ -12,6 +12,21 @@
     <color name="onBackground">#FF000000</color>
     <color name="onError">#FFFFFFFF</color>
 
-    <color name="disable">#9C9B9B</color>
+    <color name="disable">#838383</color>
+    <color name="selected">#838383</color>
     <color name="transparent">#00FFFFFF</color>
+
+    <color name="textWhite">#FFFFFFFF</color>
+    <color name="backcolorBlack">#131313</color>
+    <color name="backcolorRed">#b00031</color>
+    <color name="backcolorOrange">#9F2C00</color>
+    <color name="backcolorYellow">#C06401</color>
+    <color name="backcolorGreen">#216745</color>
+    <color name="backcolorCyan">#009288</color>
+    <color name="backcolorLightBlue">#28C3E2</color>
+    <color name="backcolorBlue">#3E79A3</color>
+    <color name="backcolorPurple">#844EAE</color>
+    <color name="backcolorRose">#C8649A</color>
+    <color name="backcolorBrown">#887964</color>
+    <color name="backcolorGrey">#383B42</color>
 </resources>

@@ -16,21 +16,31 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.parrot.R
 import com.example.parrot.core.type.ErrorType
+import com.example.parrot.core.type.FragmentType
 import com.example.parrot.databinding.ActivityHomeBinding
 import com.example.parrot.domain.state.LoginState
+import com.example.parrot.domain.state.NotesState
+import com.example.parrot.ui.activities.home.manager.MenuManager
 import com.example.parrot.ui.activities.home.viewmodel.HomeViewModel
 import com.example.parrot.ui.activities.login.view.LoginActivity
+import com.example.parrot.ui.dialogs.DialogDelete
 import com.example.parrot.ui.dialogs.DialogError
 import com.example.parrot.ui.dialogs.DialogLogout
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
 
+    @Inject
+    lateinit var menuManager: MenuManager
+
     private lateinit var binding: ActivityHomeBinding
     private lateinit var navController: NavController
     private val homeViewModel by viewModels<HomeViewModel>()
+    private var isArchived = false
+    private var isDeleted = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,6 +74,15 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun initListeners() {
+        binding.btnArchive.setOnClickListener {
+            saveChangesNoteArchived()
+        }
+        binding.btnDelete.setOnClickListener {
+            saveChangesNoteDeleted()
+        }
+        binding.btnDeleteForever.setOnClickListener {
+            deleteNote()
+        }
         binding.btnLogout.setOnClickListener {
             showDialogLogout()
         }
@@ -72,12 +91,70 @@ class HomeActivity : AppCompatActivity() {
     private fun initUIState() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
+                menuManager.menuOnClickItem.collect { fragmentType ->
+                    when (fragmentType) {
+                        FragmentType.NotesFragment -> {
+                            isArchived = true
+                            isDeleted = true
+                            binding.btnArchive.setImageResource(R.drawable.ic_archived)
+                            binding.btnDelete.setImageResource(R.drawable.ic_deleted)
+                            binding.btnArchive.isVisible = true
+                            binding.btnDelete.isVisible = true
+                            binding.btnDeleteForever.isVisible = false
+                        }
+
+                        FragmentType.ArchivedFragment -> {
+                            isArchived = false
+                            isDeleted = true
+                            binding.btnArchive.setImageResource(R.drawable.ic_unarchived)
+                            binding.btnDelete.setImageResource(R.drawable.ic_deleted)
+                            binding.btnArchive.isVisible = true
+                            binding.btnDelete.isVisible = true
+                            binding.btnDeleteForever.isVisible = false
+                        }
+
+                        FragmentType.DeletedFragment -> {
+                            isArchived = false
+                            isDeleted = false
+                            binding.btnDelete.setImageResource(R.drawable.ic_restore)
+                            binding.btnArchive.isVisible = false
+                            binding.btnDelete.isVisible = true
+                            binding.btnDeleteForever.isVisible = true
+                        }
+
+                        null -> {
+                            isArchived = false
+                            isDeleted = false
+                            binding.btnArchive.tag = null
+                            binding.btnDelete.tag = null
+                            binding.btnArchive.isVisible = false
+                            binding.btnDelete.isVisible = false
+                            binding.btnDeleteForever.isVisible = false
+                        }
+                    }
+                }
+            }
+        }
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
                 homeViewModel.loginState.collect { loginState ->
                     when (loginState) {
                         LoginState.Loading -> onLoading()
                         LoginState.Success -> onSuccess()
                         is LoginState.Error -> onError()
                         null -> {}
+                    }
+                }
+            }
+        }
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                homeViewModel.notesState.collect { notesState ->
+                    when (notesState) {
+                        NotesState.Loading -> onLoading()
+                        is NotesState.Success -> onSuccess()
+                        NotesState.Complete -> onComplete()
+                        is NotesState.Error -> onError()
                     }
                 }
             }
@@ -91,6 +168,11 @@ class HomeActivity : AppCompatActivity() {
     private fun onSuccess() {
         binding.progressBar.isVisible = false
         navigateToLoginActivity()
+    }
+
+    private fun onComplete() {
+        binding.progressBar.isVisible = false
+        menuManager.resetMenu()
     }
 
     private fun onError() {
@@ -110,6 +192,36 @@ class HomeActivity : AppCompatActivity() {
             onSelectedButton = { isSelected ->
                 if (isSelected) {
                     homeViewModel.logOutUser()
+                }
+            })
+    }
+
+    private fun saveChangesNoteArchived() {
+        if (!menuManager.listNotesSelected.value.isNullOrEmpty()) {
+            homeViewModel.listNotesId = menuManager.listNotesSelected.value
+            val mapUpdate = mapOf("isArchived" to isArchived)
+            homeViewModel.multiUpdateNote(mapUpdate)
+        }
+    }
+
+    private fun saveChangesNoteDeleted() {
+        if (!menuManager.listNotesSelected.value.isNullOrEmpty()) {
+            homeViewModel.listNotesId = menuManager.listNotesSelected.value
+            val mapUpdate = mapOf("isDeleted" to isDeleted)
+            homeViewModel.multiUpdateNote(mapUpdate)
+        }
+    }
+
+    private fun deleteNote() {
+        DialogDelete(
+            binding.main,
+            multiDelete = true,
+            onSelectedButton = { isSelected ->
+                if (isSelected) {
+                    if (!menuManager.listNotesSelected.value.isNullOrEmpty()) {
+                        homeViewModel.listNotesId = menuManager.listNotesSelected.value
+                        homeViewModel.multiDeleteNote()
+                    }
                 }
             })
     }
