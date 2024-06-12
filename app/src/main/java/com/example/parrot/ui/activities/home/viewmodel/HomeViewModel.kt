@@ -80,8 +80,8 @@ class HomeViewModel @Inject constructor(
                         .addOnSuccessListener { notesState ->
                             _notesState.value = notesState
                         }.addOnFailureListener { exception ->
-                        _notesState.value = NotesState.Error(exception.message ?: "")
-                    }
+                            _notesState.value = NotesState.Error(exception.message ?: "")
+                        }
                 }
             }
         }

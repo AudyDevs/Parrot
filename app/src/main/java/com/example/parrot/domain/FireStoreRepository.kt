@@ -16,7 +16,10 @@ interface FireStoreRepository {
 
     suspend fun deleteNote(noteId: String): Task<NotesState>
 
-    suspend fun multiUpdateNote(listNoteId: MutableList<String>, mapUpdate: Map<String, Boolean>): Task<NotesState>
+    suspend fun multiUpdateNote(
+        listNoteId: MutableList<String>,
+        mapUpdate: Map<String, Boolean>
+    ): Task<NotesState>
 
     suspend fun multiDeleteNote(listNoteId: MutableList<String>): Task<NotesState>
 }

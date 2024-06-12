@@ -36,6 +36,8 @@ class LoginViewModel @Inject constructor(
     private var _loginState = MutableStateFlow<LoginState?>(null)
     var loginState: StateFlow<LoginState?> = _loginState
 
+    var showSplash: Boolean = true
+
     var email: String = ""
     var password: String = ""
     var provider: ProviderType = ProviderType.Email

@@ -19,7 +19,12 @@ class ColorViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             binding.itemColor.setCardBackgroundColor(ContextCompat.getColor(context, color.color))
         } else {
             binding.imageReset.isVisible = true
-            binding.itemColor.setCardBackgroundColor(ContextCompat.getColor(context, R.color.backcolorBlack))
+            binding.itemColor.setCardBackgroundColor(
+                ContextCompat.getColor(
+                    context,
+                    R.color.backcolorBlack
+                )
+            )
         }
         binding.frameColorLayout.setOnClickListener { onItemSelected(color) }
     }

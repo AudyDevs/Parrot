@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
-import com.example.parrot.ui.activities.home.manager.MenuManager
 import com.example.parrot.core.datastore.DataStorePreferences
 import com.example.parrot.data.DataStoreRepositoryImpl
 import com.example.parrot.data.FireStoreRepositoryImpl
@@ -12,6 +11,7 @@ import com.example.parrot.data.LoginRepositoryImpl
 import com.example.parrot.domain.DataStoreRepository
 import com.example.parrot.domain.FireStoreRepository
 import com.example.parrot.domain.LoginRepository
+import com.example.parrot.ui.activities.home.manager.MenuManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
