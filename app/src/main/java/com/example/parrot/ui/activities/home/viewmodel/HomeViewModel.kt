@@ -31,8 +31,6 @@ class HomeViewModel @Inject constructor(
     private var _notesState = MutableStateFlow<NotesState>(NotesState.Loading)
     var notesState: StateFlow<NotesState> = _notesState
 
-    var listNotesId: MutableList<String>? = mutableListOf()
-
     fun resetLoginState() {
         _loginState.value = null
     }
@@ -57,12 +55,12 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun multiUpdateNote(mapUpdate: Map<String, Boolean>) {
+    fun multiUpdateNote(listNotesId: MutableList<String>?, mapUpdate: Map<String, Boolean>) {
         viewModelScope.launch {
             withContext(dispatcherProvider.io) {
                 if (!listNotesId.isNullOrEmpty()) {
                     _notesState.value = NotesState.Loading
-                    multiUpdateNoteUseCase.invoke(listNotesId!!, mapUpdate)
+                    multiUpdateNoteUseCase.invoke(listNotesId, mapUpdate)
                         .addOnSuccessListener { notesState ->
                             _notesState.value = notesState
                         }.addOnFailureListener { exception ->
@@ -73,12 +71,12 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun multiDeleteNote() {
+    fun multiDeleteNote(listNotesId: MutableList<String>?) {
         viewModelScope.launch {
             withContext(dispatcherProvider.io) {
                 if (!listNotesId.isNullOrEmpty()) {
                     _notesState.value = NotesState.Loading
-                    multiDeleteNoteUseCase.invoke(listNotesId!!)
+                    multiDeleteNoteUseCase.invoke(listNotesId)
                         .addOnSuccessListener { notesState ->
                             _notesState.value = notesState
                         }.addOnFailureListener { exception ->

@@ -92,4 +92,12 @@
     <string name="SubtitleEmptyArchived">Tus notas archivadas se mostrarán aquí</string>
     <string name="TitleEmptyDeleted">Papelera vacía</string>
     <string name="SubtitleEmptyDeleted">No hay notas en la papelera</string>
+
+    <!--SnackBar Text-->
+    <string name="snackBarTextArchived">Notas archivadas</string>
+    <string name="snackBarTextUnArchived">Notas desarchivadas</string>
+    <string name="snackBarTextDelete">Notas enviadas a la papelera</string>
+    <string name="snackBarTextRestore">Notas restauradas</string>
+    <string name="snackBarTextDeleteForever">Notas eliminadas permanentemente</string>
+    <string name="snackBarTextUndo">Deshacer</string>
 </resources>

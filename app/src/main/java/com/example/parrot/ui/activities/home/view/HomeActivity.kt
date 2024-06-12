@@ -26,6 +26,7 @@ import com.example.parrot.ui.activities.login.view.LoginActivity
 import com.example.parrot.ui.dialogs.DialogDelete
 import com.example.parrot.ui.dialogs.DialogError
 import com.example.parrot.ui.dialogs.DialogLogout
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -75,13 +76,44 @@ class HomeActivity : AppCompatActivity() {
 
     private fun initListeners() {
         binding.btnArchive.setOnClickListener {
-            saveChangesNoteArchived()
+            val listNotesId = menuManager.listNotesSelected.value
+            val isArchived = isArchived
+            saveChangesNoteArchived(listNotesId, isArchived)
+            val snackBarText = if (isArchived) {
+                getString(R.string.snackBarTextArchived)
+            } else {
+                getString(R.string.snackBarTextUnArchived)
+            }
+            Snackbar.make(binding.fragmentContainerView, snackBarText, Snackbar.LENGTH_LONG)
+                .setAction(getString(R.string.snackBarTextUndo)) {
+                    menuManager.setListMenu(listNotesId)
+                    saveChangesNoteArchived(listNotesId, !isArchived)
+                }
+                .show()
         }
         binding.btnDelete.setOnClickListener {
-            saveChangesNoteDeleted()
+            val listNotesId = menuManager.listNotesSelected.value
+            val isDeleted = isDeleted
+            saveChangesNoteDeleted(listNotesId, isDeleted)
+            val snackBarText = if (isDeleted) {
+                getString(R.string.snackBarTextDelete)
+            } else {
+                getString(R.string.snackBarTextRestore)
+            }
+            Snackbar.make(binding.fragmentContainerView, snackBarText, Snackbar.LENGTH_LONG)
+                .setAction(getString(R.string.snackBarTextUndo)) {
+                    menuManager.setListMenu(listNotesId)
+                    saveChangesNoteDeleted(listNotesId, !isDeleted)
+                }
+                .show()
         }
         binding.btnDeleteForever.setOnClickListener {
             deleteNote()
+            Snackbar.make(
+                binding.fragmentContainerView,
+                getString(R.string.snackBarTextDeleteForever),
+                Snackbar.LENGTH_LONG
+            ).show()
         }
         binding.btnLogout.setOnClickListener {
             showDialogLogout()
@@ -196,19 +228,17 @@ class HomeActivity : AppCompatActivity() {
             })
     }
 
-    private fun saveChangesNoteArchived() {
-        if (!menuManager.listNotesSelected.value.isNullOrEmpty()) {
-            homeViewModel.listNotesId = menuManager.listNotesSelected.value
+    private fun saveChangesNoteArchived(listNotesId: MutableList<String>?, isArchived: Boolean) {
+        if (!listNotesId.isNullOrEmpty()) {
             val mapUpdate = mapOf("isArchived" to isArchived)
-            homeViewModel.multiUpdateNote(mapUpdate)
+            homeViewModel.multiUpdateNote(listNotesId, mapUpdate)
         }
     }
 
-    private fun saveChangesNoteDeleted() {
-        if (!menuManager.listNotesSelected.value.isNullOrEmpty()) {
-            homeViewModel.listNotesId = menuManager.listNotesSelected.value
+    private fun saveChangesNoteDeleted(listNotesId: MutableList<String>?, isDeleted: Boolean) {
+        if (!listNotesId.isNullOrEmpty()) {
             val mapUpdate = mapOf("isDeleted" to isDeleted)
-            homeViewModel.multiUpdateNote(mapUpdate)
+            homeViewModel.multiUpdateNote(listNotesId, mapUpdate)
         }
     }
 
@@ -219,8 +249,7 @@ class HomeActivity : AppCompatActivity() {
             onSelectedButton = { isSelected ->
                 if (isSelected) {
                     if (!menuManager.listNotesSelected.value.isNullOrEmpty()) {
-                        homeViewModel.listNotesId = menuManager.listNotesSelected.value
-                        homeViewModel.multiDeleteNote()
+                        homeViewModel.multiDeleteNote(menuManager.listNotesSelected.value)
                     }
                 }
             })
