@@ -125,8 +125,10 @@ class DeletedFragment : Fragment() {
             val filterNotes = notes.filter { notesModel ->
                 notesModel.isDeleted == true
             }
-            notesAdapter.updateList(filterNotes)
             binding.layoutStateDeleted.isVisible = filterNotes.isEmpty()
+            notesAdapter.updateList(filterNotes)
+        } else {
+            binding.layoutStateDeleted.isVisible = true
         }
     }
 

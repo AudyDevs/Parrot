@@ -23,9 +23,9 @@ class NotesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         binding.apply {
             tvIdNote.text = note.id
             tvTitleNote.isVisible = !note.title.isNullOrEmpty()
-            tvTitleNote.text = note.title
+            tvTitleNote.text = limitedText(note.title ?: "", 50)
             tvBodyNote.isVisible = !note.body.isNullOrEmpty()
-            tvBodyNote.text = note.body
+            tvBodyNote.text = limitedText(note.body ?: "", 250)
             changeColorUI(note.backcolor!!, false)
 
             layoutCard.setOnLongClickListener {
@@ -56,6 +56,14 @@ class NotesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                     }
                 }
             }
+        }
+    }
+
+    private fun limitedText(text: String, maxLength: Int): String {
+        return if (text.length > maxLength) {
+            text.take(maxLength) + "..."
+        } else {
+            text
         }
     }
 

@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:layout_width="150dp"
+            android:layout_width="100dp"
             android:layout_height="120dp"
             android:contentDescription="@string/cd_image"
             android:src="@drawable/ic_state_archived" />
@@ -32,7 +32,7 @@
             android:layout_marginBottom="6dp"
             android:text="@string/TitleEmptyArchived"
             android:textAlignment="center"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <TextView
@@ -41,7 +41,7 @@
             android:text="@string/SubtitleEmptyArchived"
             android:textAlignment="center"
             android:textColor="@color/disable"
-            android:textSize="16sp" />
+            android:textSize="13sp" />
     </LinearLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

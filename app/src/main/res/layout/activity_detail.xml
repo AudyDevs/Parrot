@@ -93,7 +93,6 @@
         android:textColor="@color/primary"
         android:textSize="26sp"
         android:textStyle="bold"
-        android:lines="1"
         android:backgroundTint="@color/onPrimary"
         android:layout_marginHorizontal="24dp"
         app:layout_constraintStart_toStartOf="parent"

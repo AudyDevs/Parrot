@@ -39,7 +39,6 @@
                 android:id="@+id/tvTitleNote"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:lines="1"
                 android:textColor="@color/primary"
                 android:textSize="20sp"
                 android:textStyle="bold"

@@ -132,8 +132,10 @@ class NotesFragment : Fragment() {
             val filterNotes = notes.filter { notesModel ->
                 notesModel.isArchived == false && notesModel.isDeleted == false
             }
-            notesAdapter.updateList(filterNotes)
             binding.layoutStateNotes.isVisible = filterNotes.isEmpty()
+            notesAdapter.updateList(filterNotes)
+        } else {
+            binding.layoutStateNotes.isVisible = true
         }
     }
 
