@@ -25,7 +25,7 @@ class NotesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             tvTitleNote.isVisible = !note.title.isNullOrEmpty()
             tvTitleNote.text = limitedText(note.title ?: "", 50)
             tvBodyNote.isVisible = !note.body.isNullOrEmpty()
-            tvBodyNote.text = limitedText(note.body ?: "", 250)
+            tvBodyNote.text = limitedText(note.body ?: "", 100)
             changeColorUI(note.backcolor!!, false)
 
             layoutCard.setOnLongClickListener {
