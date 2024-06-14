@@ -102,9 +102,11 @@ class DeletedFragment : Fragment() {
         }
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                menuManager.listNotesSelected.collect { listNotesSelected ->
-                    if (listNotesSelected.isNullOrEmpty()) {
+                menuManager.isSelectedMenu.collect { isSelectedMenu ->
+                    if (isSelectedMenu) {
+                        notesAdapter.resetItemSelectList()
                         notesViewModel.getNotes()
+                        menuManager.availableSelectorMenu(false)
                     }
                 }
             }
@@ -128,6 +130,7 @@ class DeletedFragment : Fragment() {
             binding.layoutStateDeleted.isVisible = filterNotes.isEmpty()
             notesAdapter.updateList(filterNotes)
         } else {
+            notesAdapter.updateList(emptyList())
             binding.layoutStateDeleted.isVisible = true
         }
     }

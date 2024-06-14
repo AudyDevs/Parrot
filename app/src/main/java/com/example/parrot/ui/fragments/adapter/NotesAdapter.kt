@@ -14,7 +14,11 @@ class NotesAdapter(
 ) :
     RecyclerView.Adapter<NotesViewHolder>() {
 
-    private val itemSelectedList = mutableListOf<String>()
+    private var itemSelectedList = mutableListOf<String>()
+
+    fun resetItemSelectList() {
+        itemSelectedList.clear()
+    }
 
     fun updateList(list: List<NotesModel>) {
         val diff = NotesDiffUtil(notesList, list)

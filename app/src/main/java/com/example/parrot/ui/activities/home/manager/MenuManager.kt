@@ -15,6 +15,13 @@ class MenuManager @Inject constructor() {
     private val _listNotesSelected = MutableStateFlow<MutableList<String>?>(null)
     val listNotesSelected: StateFlow<MutableList<String>?> = _listNotesSelected
 
+    private val _isSelectedMenu = MutableStateFlow(false)
+    val isSelectedMenu: StateFlow<Boolean> = _isSelectedMenu
+
+    fun availableSelectorMenu(reset: Boolean) {
+        _isSelectedMenu.value = reset
+    }
+
     fun resetMenu() {
         _menuOnClickItem.value = null
         _listNotesSelected.value = null

@@ -109,11 +109,6 @@ class HomeActivity : AppCompatActivity() {
         }
         binding.btnDeleteForever.setOnClickListener {
             deleteNote()
-            Snackbar.make(
-                binding.fragmentContainerView,
-                getString(R.string.snackBarTextDeleteForever),
-                Snackbar.LENGTH_LONG
-            ).show()
         }
         binding.btnLogout.setOnClickListener {
             showDialogLogout()
@@ -204,6 +199,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun onComplete() {
         binding.progressBar.isVisible = false
+        menuManager.availableSelectorMenu(true)
         menuManager.resetMenu()
     }
 
@@ -251,6 +247,11 @@ class HomeActivity : AppCompatActivity() {
                     if (!menuManager.listNotesSelected.value.isNullOrEmpty()) {
                         homeViewModel.multiDeleteNote(menuManager.listNotesSelected.value)
                     }
+                    Snackbar.make(
+                        binding.fragmentContainerView,
+                        getString(R.string.snackBarTextDeleteForever),
+                        Snackbar.LENGTH_LONG
+                    ).show()
                 }
             })
     }
