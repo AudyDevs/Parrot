@@ -1,10 +1,10 @@
 <h1 align="center">Parrot</h1>
 
 <p align="center"> 
-  Aplicación que permite chatear con diferentes usuarios registrados a través de FireBase. Chats grupales, notificaciones para mensajes nuevos, subida de documentos al servidor para que otros usuarios pueda descargarla, modificación del perfil de usuario. Chat privado para poder probar la aplicación sin ningun usuario.
+  Aplicación que permite guardar notas a través de FireBase. Registro a través de FireBase Auth con email o Google. Personaliza tus notas con el color que prefieras. Archiva, envía a la papelera, restaura notas o elimínalas permanentemente.
 </p>
 <p align="center">   
-  Aplicicación Android basada en la arquitectura MVVM desarrollada con DaggerHilt, StateFlows, ViewModels, Corrutinas, FireBase, Notificaciones cloud y Testing
+  Aplicicación Android basada en la arquitectura MVVM desarrollada con DaggerHilt, StateFlows, ViewModels, Corrutinas, FireBase Cloud, FireBase Auth (Email y Google) y Testing
 </p>
 
 ## 🛠 Herramientas y librerias
@@ -15,17 +15,19 @@
 - [FireBase](https://github.com/firebase/firebase-android-sdk): Suite de muchas herramientas tales como, notificaciones push, base de datos cloud, informe de errores, analíticas y controles de login.
 - [Coroutines](https://github.com/Kotlin/kotlinx.coroutines): Manejo de tareas asíncronas, usado para no bloquear el hilo principal de la aplicación mientras se espera la respuesta de la consulta.
 - [Dagger Hilt](https://dagger.dev/hilt/) para inyección de dependencias.
+- Navigation component: Es una parte de la suite de Jetpack que simplifica la implementación de la navegación en las Activities y los Fragments.
+- Datastore preferences: Nos permite almacenar datos en local de forma asíncrona. Ideal para guardar preferencias de usuario y configuraciones de la aplicación.
 - Testing
 - Código con Clean Code y Clean Architecture
 
 ## 📱 Capturas
-| Splash | Login | Chats |
+| Splash | Login | Register |
 |--|--|--|
-| <img src="" width="245" height="500"> | <img src="" width="245" height="500"> | <img src="" width="245" height="500">
+| <img src="/previews/SplashActivity.webp" width="245" height="500"> | <img src="/previews/LoginActivity.webp" width="245" height="500"> | <img src="/previews/RegisterActivity.webp" width="245" height="500">
 
-| Groups | Profile | Messages |
+| Notes | Detail note | Color dialog |
 |--|--|--|
-| <img src="" width="245" height="500"> | <img src="" width="245" height="500"> | <img src="" width="245" height="500">
+| <img src="/previews/NotesActivity.webp" width="245" height="500"> | <img src="/previews/DetailNoteActivity.webp" width="245" height="500"> | <img src="/previews/ColorDialog.webp" width="245" height="500">
 
 ## 👇 Descargar 👇
 Ir a [Releases](https://github.com/AudyDevs/Parrot/releases) para descargar el último APK.
