@@ -25,9 +25,6 @@
             android:name=".ui.activities.register.view.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.MessagesActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.activities.login.view.LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.App.Starting">
