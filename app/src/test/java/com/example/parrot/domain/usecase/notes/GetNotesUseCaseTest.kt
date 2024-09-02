@@ -23,7 +23,7 @@ class GetNotesUseCaseTest {
     }
 
     @Test
-    fun `when GetNotesUseCaseTest is called successfully, FireStoreRepository should return a correct success NotesState`() =
+    fun `when GetNotesUseCase is called successfully, FireStoreRepository should return a correct success NotesState`() =
         runBlocking {
             //Given
             val anyTaskNotesSuccessState = anyTaskNotesSuccessState()
@@ -37,7 +37,7 @@ class GetNotesUseCaseTest {
         }
 
     @Test
-    fun `when GetNotesUseCaseTest is called successfully, FireStoreRepository should call getNotes once`() =
+    fun `when GetNotesUseCase is called successfully, FireStoreRepository should call getNotes once`() =
         runBlocking {
             //Given
             val anyTaskNotesSuccessState = anyTaskNotesSuccessState()
